@@ -1,31 +1,95 @@
-# Network Intrusion Detection System (Streamlit)
+# 🛡️ Network Intrusion Detection System
 
-A dataset-based educational prototype that trains a machine-learning classifier on labeled network traffic CSV data and displays predictions and evaluation metrics.
+A machine-learning-based Network Intrusion Detection System built using Python and Streamlit. The application loads a network traffic dataset, trains a Random Forest classifier, evaluates model performance, and predicts whether traffic is normal or potentially malicious.
+
+**Note:** This is an educational prototype that uses synthetic demonstration data. It does not monitor live network traffic.
 
 ## Features
-- Upload a labeled CSV dataset
-- Select the target/label column
-- Train a Random Forest classifier
-- View test accuracy, classification report, and confusion matrix
-- Download predicted labels
 
-## Requirements
-- Python 3.10 or newer recommended
+- Automatically loads a CSV dataset from the `dataset` folder.
+- Displays a dataset preview.
+- Shows the distribution of traffic labels.
+- Allows selection of the target label column.
+- Splits data into training and testing sets.
+- Trains a Random Forest classification model.
+- Displays test accuracy and a classification report.
+- Shows the confusion matrix.
+- Predicts labels for network traffic records.
+- Displays normal and potentially malicious traffic counts.
+- Allows users to download prediction results as a CSV file.
 
-## Run locally
+## Technologies Used
+
+- Python
+- Streamlit
+- pandas
+- NumPy
+- scikit-learn
+- Matplotlib
+
+## Project Structure
+
+```text
+Network-Intrusion-Detection-System/
+├── app.py
+├── requirements.txt
+├── README.md
+└── dataset/
+    └── sample_network_intrusion_dataset.csv
+```
+
+## Installation and Execution
+
+### 1. Clone the repository
+
 ```bash
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+git clone https://github.com/sreegurugubill/Network-Intrusion-Detection-System.git
+```
 
+### 2. Open the project folder
+
+```bash
+cd Network-Intrusion-Detection-System
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+### 4. Run the application
+
+```bash
 streamlit run app.py
 ```
 
-## Dataset format
-Upload a CSV where each row represents a network-flow record. Include numeric/categorical feature columns and a target column such as `Label` containing at least two classes (for example, `BENIGN`, `DoS`, `PortScan`). Do not upload private or sensitive network data to a public repository.
+Open the local URL displayed in the terminal, usually `http://localhost:8501`.
+
+## How It Works
+
+1. The application loads a CSV file from the `dataset` folder.
+2. The user selects the target label column.
+3. The application displays the dataset preview and label distribution.
+4. The data is divided into training and testing sets.
+5. A Random Forest classifier is trained on the training data.
+6. The application evaluates the model using test accuracy, a classification report, and a confusion matrix.
+7. The trained model predicts labels for the dataset records.
+8. The prediction results can be downloaded as a CSV file.
+
+## Dataset
+
+The sample dataset contains synthetic network traffic records created for demonstration purposes. It is not a verified collection of real network traffic or attacks.
+
+To use another dataset, place a compatible CSV file in the `dataset` folder. The CSV should contain feature columns and a target column with at least two distinct classes.
 
 ## Limitations
-This app analyzes uploaded records; it does not capture live network traffic. Evaluation results depend on the dataset and split, and should not be treated as proof of production-grade intrusion detection.
+
+- The application does not capture or monitor live network traffic.
+- Model performance depends on the dataset and its quality.
+- Results from synthetic data do not establish real-world detection accuracy.
+- This project is intended for educational and demonstration purposes.
+
+## Conclusion
+
+This project demonstrates how machine learning can be applied to network traffic classification through a simple Streamlit dashboard. It provides dataset visualization, model evaluation, traffic label prediction, and downloadable results.
